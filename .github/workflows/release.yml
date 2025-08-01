@@ -1,0 +1,56 @@
+name: Release and Publish
+
+on:
+  push:
+    branches:
+      - master
+    paths:
+      - 'package.json'
+
+  workflow_dispatch:
+
+jobs:
+  release:
+    name: Standard Version Release
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: ⤵️ Checkout Repo
+        uses: actions/checkout@v3
+
+      - name: 🧰 Setup Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: '18'
+          registry-url: 'https://registry.npmjs.org/'
+
+      - name: 📦 Install Dependencies
+        run: npm ci
+
+      - name: 🚦 Run Tests (optional)
+        run: npm test
+
+      - name: 🚀 Bump Version and Generate Changelog
+        run: |
+          git config --global user.name "github-actions[bot]"
+          git config --global user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          npx standard-version
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: 🔁 Push Version Bump to Repo
+        run: git push --follow-tags origin main
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: 📦 Publish to npm
+        run: npm publish
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+
+      - name: 📝 Create GitHub Release
+        uses: softprops/action-gh-release@v1
+        with:
+          generate_release_notes: true
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

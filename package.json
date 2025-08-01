@@ -9,6 +9,9 @@
     "lint": "eslint . --ext .js",
     "lint:fix": "eslint lib/** --fix",
     "release": "standard-version",
+    "release:minor": "standard-version --release-as minor",
+    "release:major": "standard-version --release-as major",
+    "release:publish": "npm publish && git push --follow-tags origin main",
     "test": "mocha"
   },
   "main": "./index.js",

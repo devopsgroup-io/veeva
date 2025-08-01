@@ -1,8 +1,6 @@
 # Veeva
 
 [![NPM version](https://img.shields.io/npm/v/veeva.svg)](https://www.npmjs.com/package/veeva)
-[![Build Status](https://img.shields.io/travis/devopsgroup-io/veeva.svg?branch=master)](https://travis-ci.org/devopsgroup-io/veeva)
-[![dependencies](https://david-dm.org/devopsgroup-io/veeva.svg)](https://david-dm.org/devopsgroup-io/veeva#info=dependencies&view=tables)
 
 > A CLI and templating toolkit to streamline development of Veeva CLM Presentations.
 
