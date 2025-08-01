@@ -1,3 +1,4 @@
 # Examples
 
-* [Veeva CLM Example](https://github.com/stevebritton/veeva/examples/clm)
+* [Veeva CLM Example](https://github.com/devopsgroup-io/veeva/tree/master/examples/clm)
+
