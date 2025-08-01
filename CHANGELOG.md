@@ -2,6 +2,15 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## 3.1.0 (2025-08-01)
+
+
+### Features
+
+* Allow for passing custom Handlebars Helpers based on helpers path ([408eb38](https://github.com/devopsgroup-io/veeva/commit/408eb38))
+
+
+
 ## [3.0.0](https://github.com/devopsgroup-io/veeva/compare/v2.0.0-alpha.10...v3.0.0) (2025-08-01)
 
 

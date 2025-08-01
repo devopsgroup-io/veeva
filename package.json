@@ -1,7 +1,7 @@
 {
   "name": "veeva",
   "description": "Veeva CLM Generator & Workflow for building iRep Presentations.",
-  "version": "3.0.0",
+  "version": "3.1.0",
   "bin": {
     "veeva": "bin/veeva.js"
   },
