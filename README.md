@@ -1,259 +1,217 @@
-# Veeva 
-[![NPM version](https://img.shields.io/npm/v/veeva.svg)](https://www.npmjs.com/package/veeva) [![Build Status](https://img.shields.io/travis/devopsgroup-io/veeva.svg?branch=master)](https://travis-ci.org/devopsgroup-io/veeva)
+# Veeva
+
+[![NPM version](https://img.shields.io/npm/v/veeva.svg)](https://www.npmjs.com/package/veeva)
+[![Build Status](https://img.shields.io/travis/devopsgroup-io/veeva.svg?branch=master)](https://travis-ci.org/devopsgroup-io/veeva)
 [![dependencies](https://david-dm.org/devopsgroup-io/veeva.svg)](https://david-dm.org/devopsgroup-io/veeva#info=dependencies&view=tables)
 
-**Warning:** This module is still in alpha and is not 100% ready for use.
+> A CLI and templating toolkit to streamline development of Veeva CLM Presentations.
 
-> This npm package was developed to centralize core functionality and worklfow processes for building Veeva iRep CLM Presentations. 
-
-If you're developing and managing several client Veeva CLM projects, then you know it's cumbersome to introduce new functionality (outside of content) 
-when your code-base is inconsistent across multiple repositories.
-
-:link: [Veeva CLM Example](https://github.com/devopsgroup-io/veeva/tree/master/examples/clm)
-
-## Features
-
-* Define Veeva CLM presentations in one central `configuration.yml` file
-* Template and partial system using Assemble.io
-* SASS compilation
-* Relative link conversion to veeva: protocol links
-* Automatic screen shot, thumbnail, and zip file generation
-* iRep control file generator based on `configuration.yml` file
-* Vault Multichannel .CSV generator based on `configuration.yml` file
-* Development Mode: - Watch, rebuild, and reload Key Messages locally in your web browser
+If you're developing and managing multiple Veeva CLM projects, it can be time-consuming to manage consistent code and workflows. This package centralizes core functionality for building and deploying Veeva CLM Presentations.
 
 
-**In This Documentation**
+---
+
+## ✨ Features
+
+* 📁 Centralized configuration via `configuration.yml`
+* 🧩 Template and partial support using Handlebars
+* 🎨 Sass compilation (minified and unminified)
+* 🔗 Relative link conversion to `veeva:` protocol links
+* 🖼️ Automatic screenshot, thumbnail, and zip generation
+* 🧾 iRep control file generator
+* 📄 Vault Multichannel Loader CSV file generator
+* 🔁 Development mode with live reload and file watching
+
+---
+
+## 📘 Table of Contents
 
 1. [Getting Started](#getting-started)
 2. [File Structure](#file-structure)
-3. [Working with the Source Files](#working-with-the-source-files)
-4. [Options & Settings](#options-and-settings)
-5. [Veeva Tasks & Workflow](#veeva-tasks-and-workflow)
-6. [Troubleshooting & FAQ](#troubleshooting-and-faq)
+3. [Working with Source Files](#working-with-source-files)
+4. [Configuration Options](#configuration-options)
+5. [CLI Tasks & Workflow](#cli-tasks--workflow)
+6. [Troubleshooting & FAQ](#troubleshooting--faq)
 
+---
 
-## Getting Started
+## 🚀 Getting Started
 
-### Dependencies
+### Prerequisites
 
-Install the following prerequisites on your development machine.
+Ensure the following dependencies are installed:
 
-* [Node.js](http://nodejs.org)
-* [imagemagick](http://www.imagemagick.org/script/binary-releases.php) 
-  * OSX: `brew install imagemagick`
-  * Ubuntu: `apt-get install imagemagick`
-  * Windows or other: [http://www.imagemagick.org/script/binary-releases.php](http://www.imagemagick.org/script/binary-releases.php) 
+* [Node.js](https://nodejs.org)
+* [ImageMagick](https://imagemagick.org/script/download.php)
 
+  * **macOS:** `brew install imagemagick`
+  * **Ubuntu:** `apt-get install imagemagick`
+  * **Windows:** [Download](https://imagemagick.org/script/binary-releases.php)
 
-### Quick Start
+### Installation
 
+```bash
+npm install veeva --save
 ```
-$ npm install veeva --save
-```
 
-### Setup
-Once the `npm install` has completed, the following file structure below will need to be placed into your project root directory. 
-For a complete working example, please reference [Veeva CLM Example](https://github.com/devopsgroup-io/veeva/tree/master/examples/clm)
+---
 
-## File Structure
+## 📁 File Structure
 
-Add your files to the appropriate `app` sub directories. Veeva module will process and compile them into `build`.
-
-**Notes**:
-* Key Message naming convention is set as the following: **product name**-**Key Message Name**
+Place the following structure in your project root directory:
 
 ```
 root/
-|—— app/
-|   |—— assets/
-|   |   |—— scss/
-|   |   |—— js/
-|   |—— templates/
-|   |   |—— includes
-|   |   |—— layouts
-|   |   |—— pages
-|   |   |   |—— globals
-|   |   |   |   |—— fonts
-|   |   |   |   |—— images
-|   |   |   |   |—— isi.hbs
-|   |   |   |   |—— terms.hbs
-|   |   |   |—— veeva-home
-|   |   |   |   |—— images
-|   |   |   |   |—— veeva-home.hbs
-|   |   |   |—— veeva-overview
-|   |   |   |   |—— images
-|   |   |   |   |—— veeva-overview.hbs
-|   |   |   |—— veeva-resources
-|   |   |   |   |—— images
-|   |   |   |   |—— veeva-resources.hbs
-|   |   |   |—— veeva-sitemap
-|   |   |   |   |—— images
-|   |   |   |   |—— js
-|   |   |   |   |—— veeva-sitemap.hbs
-|
-|
-|—— configuration.yml
-|—— gulfile.js
-|—— package.json
+├── app/
+│   ├── assets/
+│   │   ├── scss/
+│   │   └── js/
+│   └── templates/
+│       ├── data/
+│       │   └── clm.yml
+│       ├── includes/
+│       ├── layouts/
+│       └── pages/
+│           ├── shared/
+│           │   ├── fonts/
+│           │   ├── images/
+│           │   ├── isi.hbs
+│           │   └── terms.hbs
+│           ├── home/
+│           ├── overview/
+│           ├── resources/
+│           └── sitemap/
+├── configuration.yml
+└── package.json
 ```
 
-## Working with the Source Files
+> Key Message naming convention: **product-name**-**key-message-name**
+
+---
+
+## 🧑‍💻 Working with Source Files
 
 ### Sass
 
-Sass files are located in `app` > `assets` > `scss`. Veeva module watches and generates minified and unminified CSS files.
+* Located in `app/assets/scss`
+* Compiles to minified and unminified CSS
 
 ### JavaScript
 
-JavaScript files are located in the `app` > `assets` > `js` directory.
+* Located in `app/assets/js`
 
-### Assemble.io Templates
+### Handlebars Templates
 
-Template files are located in the `app` > `templates`.
+* Located in `app/templates`
+* Supports [Handlebars Helpers](https://github.com/helpers/handlebars-helpers)
 
-#### Assemble Helpers
+---
 
-* [Handlebars Helpers](https://github.com/helpers/handlebars-helpers)
+## ⚙️ Configuration Options
 
-## Options and Settings
+### configuration.yml
 
-### Configuration File
+Define Key Messages under the `clm` node:
 
-[View full configuration.yml example](https://github.com/devopsgroup-io/veeva/tree/master/examples/clm/configuration.yml)
-
-Inside `configuration.yml`, add Key Messages under the clm node.
-
-```yml
+```yaml
 clm:
   product:
-  name: 'Product-Name'
-  suffix: '-'
- primary:
-  name: 'CLM-Presentation-ID'
-  key_messages:
-  - key_message: 'home'
-    description: 'Home'
-    display_order: '0'
-    slides:
-    - slide: 'home'
-      id: '0'
-  - key_message: 'overview'
-    description: 'Veeva Test Overview'
-    display_order: '1'
-    slides:
-    - slide: 'Veeva Test Overview'
-      id: '2-0'
-  - key_message: 'sitemap'
-    description: 'Sitemap'
-    display_order: '2'
-    slides:
-    - slide: 'Sitemap'
-      id: '0-1'
+    name: 'Product-Name'
+    suffix: '-'
+  primary:
+    name: 'CLM-Presentation-ID'
+    key_messages:
+      - key_message: 'home'
+        description: 'Home'
+        display_order: '0'
+        slides:
+          - slide: 'home'
+            id: '0'
+      - key_message: 'overview'
+        description: 'Veeva Test Overview'
+        display_order: '1'
+        slides:
+          - slide: 'Veeva Test Overview'
+            id: '2-0'
+      - key_message: 'sitemap'
+        description: 'Sitemap'
+        display_order: '2'
+        slides:
+          - slide: 'Sitemap'
+            id: '0-1'
 ```
 
-### Changing the Directory Structure
-Inside `configuration.yml` you'll see a variable named `paths`. Adjust the paths to suit your workflow.
+### Custom Paths
 
-``` yml
-"paths": {
-    "src": "app",
-    "dist": "build",
-    "deploy": "deploy",
-    "tmp": "build/.tmp",
-    "pages": "app/templates/pages",
-    "layouts": "app/templates/layouts"
-}
+Update paths in `configuration.yml` as needed:
+
+```yaml
+paths:
+  src: "app"
+  dist: "build"
+  deploy: "deploy"
+  tmp: "build/.tmp"
+  pages: "app/templates/pages"
+  layouts: "app/templates/layouts"
 ```
 
+> 💡 Tip: YAML files must use spaces (not tabs).
 
-## Veeva Tasks and Workflow
+---
 
-For a quick reference in your terminal:
+## 🛠️ CLI Tasks & Workflow
+
+### Usage
 
 ```bash
-$ veeva --help
-
-Usage: veeva <task> [options]
-
-TASKS
-_________________________________________________________________________
-$ veeva                     Default task that kicks off development mode
-$ veeva build               Build task
-$ veeva deploy              Deploy task
-$ veeva screenshots         Generates screenshots based clm.yml config file and outputs a PDF
-$ veeva stage               Stage task
-$ veeva stage-vault         Generates a Veeva Vault Multichannel Loader .CSV file
-
-OPTIONS
-_________________________________________________________________________
-    -a --all-key-messages  Include hidden Key Messages when staging and deploying
-    -c --config            Show merged configuration
-    -d --dry-run           Do not touch or write anything, but show the commands and interactivity
-    -e --debug             Output exceptions
-    -h --help              Print this help
-    -k --key-message       Build, Stage, and Deploy single Key Message
-    -v --version           Print version number
-    -V --verbose           Verbose output
+veeva --help
 ```
 
-```bash
-$ veeva
-```
-Runs the following workflow:
-* Assembles template files
-* Compiles Sass files
-* Copies project JS files
-* Copies the Veeva module JS dependencies
-* Copies images
-* Starts browserSync, watches for changes, and reloads browser when file changes are triggered
+### Common Tasks
 
-```bash
-$ veeva build
-```
-Runs the following workflow:
-* Assembles template files
-* Compiles Sass files and minifies CSS
-* Uglfies project JS files
-* Copies the Veeva module JS dependencies
-* Copies images
-* Generates Veeva required thumbnails per Key Message
-* Enables **deploy mode**
-  * Converts relative links to Veeva protocol links (Navigation, Click Stream events, etc.)
+| Command             | Description                                      |
+| ------------------- | ------------------------------------------------ |
+| `veeva`             | Starts dev mode: builds, watches, reloads        |
+| `veeva build`       | Production build: compiles/minifies everything   |
+| `veeva stage`       | Builds + generates zip/ctl files per Key Message |
+| `veeva deploy`      | Uploads zip/ctl files via FTP (requires config)  |
+| `veeva vault-stage` | Generates Vault Multichannel CSV file            |
 
-```bash
-$ veeva stage
-```
-Runs the following workflow:
-* Runs the **veeva build** process
-* Generates individual Key Message zip files and places them into the `deploy` directory
-* Creates individual Key Message ctl files based on `configuration.yml` file details and places them into the `deploy` directory
+### Options
 
-```bash
-$ veeva deploy
-```
-**Note:** this process uses FTP information stored in the `configuration.yml` file
-Runs the following workflow:
-* Uploads all `.zip` files sitting in the `deploy` directory
-* Once all of the `.zip` files have been uploaded, all `.ctl` files sitting in the `deploy` directory are then uploaded
+| Option                     | Description                        |
+| -------------------------- | ---------------------------------- |
+| `-a`, `--all-key-messages` | Include hidden Key Messages        |
+| `-c`, `--config`           | Show merged configuration          |
+| `-d`, `--dry-run`          | Preview commands without execution |
+| `-e`, `--debug`            | Output error tracebacks            |
+| `-h`, `--help`             | Print help message                 |
+| `-k`, `--key-message`      | Run tasks for a single Key Message |
+| `-v`, `--version`          | Show version number                |
+| `-V`, `--verbose`          | Enable verbose output              |
 
-```bash
-$ veeva vault-stage
-```
-Runs the following workflow:
-* Generates a Veeva Vault Multichannel Loader `.csv` file based on `configuration.yml` details
+---
 
+## 🧪 Troubleshooting & FAQ
 
+* Make sure you're using a compatible Node.js version (check `package.json`)
+* Ensure `configuration.yml` is valid YAML (use a linter if needed)
+* Screenshots only process `.html` files; static assets like `.pdf` require manual thumbnails
 
-## Notes
+### Need Help?
 
-* Generated thumbnails (screen shots) only process .html files, so static Key Messages (i.e., pdf) will still need to have Veeva required thumbnails generated
+Submit issues or feature requests via [GitHub Issues](https://github.com/devopsgroup-io/veeva/issues/new).
 
-## Troubleshooting
+---
 
-If you're having issues with the Veeva Node Package, submit a [submit a GitHub Issue](https://github.com/devopsgroup-io/veeva/issues/new).
+## 📄 License
 
-* Ensure you're running the correct node and npm versions specified in the package.json file
-* Make sure your configuration.yml file exists and is well formatted
+[MIT](LICENSE)
 
+---
 
+## 🙌 Contributing
+
+Pull requests are welcome! For major changes, please open an issue first to discuss what you’d like to change.
+
+> For more examples, see the [CLM Example Project](https://github.com/devopsgroup-io/veeva/tree/master/examples/clm).

@@ -1,52 +1,83 @@
 ---
-software:
-  name: Veeva CLM Builder
+name: 'My Branded IVA'
 
-clm:
- customFields:
-  veevaTrackSubsceneField:
- ftp:
-  email:
-  host:
-  user:
-  pass:
-  remotePath: /ctlfile
- product:
-  name: 'must-match-salesforce'
-  suffix: '-'
- primary:
-  name: primary-clm-id-or-name-v1
-  key_messages:
-  - key_message: home
-    description: Home
-    display_order: 0
+
+prc:
+  code: ''
+  date: ''
+
+product: 
+  name: 'Must match Veeva Product'
+  suffix: '_'
+
+clm_version: 1
+crm:
+  deploy_to: 'vault'
+  hasSharedResources: false
+  presentation_country: 'United States'
+  presentation_id: 
+  presentation_name: 'My Branded IVA'
+  presentation_training: false
+  slide_related_shared_resource: product-shared
+  
+
+paths:
+  sharedAssets: 'shared'
+
+customFields:
+  veevaTrackSubsceneField: 'custom'
+
+key_messages:
+  - key_message: '00_00'
+    name: 'Home'
+    description: 'Home'
+    footer_ignore: true
+    references: ['1', '2', '3']
     slides:
-    - slide: home
-      id: 0
-  - key_message: overview
-    description: CLM Overview
-    display_order: 1
+    - slide: 'Home'
+      screenshots:
+      - 'isi-open'
+      - 'isi-open-2'
+      - modal-open: modal-references
+
+  - key_message: '01_00'
+    name: 'URGENCY TO TREAT'
+    description: 'URGENCY TO TREAT'
+    references: ['4', '5', '6']
     slides:
-    - slide: Overview
-      id: 2-0
-  - key_message: moa
-    description: MOA
-    display_order: 2
+    - slide: 'URGENCY TO TREAT'
+      screenshots:
+      - modal-open: modal-references
+
+  - key_message: '02_00'
+    name: 'EFFICACY'
+    description: 'EFFICACY'
     slides:
-    - slide: 'MOA Overview'
-      id: 3-0
-    - slide: 'MOA 2'
-      id: 3-1
-    - slide: 'MOA 3'
-      id: 3-2
-  - key_message: resources
-    description: Resources
-    display_order: 2
-  - key_message: references
-    description: References
-    display_order: 3
- assets:
-  name: hidden-clm-id-or-name-v1
-  key_messages:
-  - key_message: prescribing-information
-  - key_message: patient-brochure
+    - slide: 'EFFICACY'
+      screenshots:
+      - modal-open: modal-references
+      - modal-open: study-population
+      - modal-open: study-design
+    
+    sub_slides:
+      - name: 'Proven seizure reduction'
+        key_message: '02_00'
+      - name: 'First 4 week results'
+        key_message: '02_10'
+
+
+
+pdf_document:
+  size: 
+    - 2048
+    - 1536
+  height: 1536
+  width: 2048
+
+thumbnail_sizes:
+  thumb:
+    height: 1536
+    name: 'thumb.png'
+    quality: 55
+    width: 2048
+

@@ -3,13 +3,13 @@
     "document_id__v",
     "external_id__v",
     "name__v",
+    "Create Presentation",
     "Type",
     "lifecycle__v",
     "Presentation Link",
     "Fields Only",
     "pres.country__v.name__v",
     "pres.crm_end_date__v",
-    "pres.crm_presentation_id__v",
     "pres.crm_start_date__v",
     "pres.crm_training__v",
     "pres.product__v.name__v",
@@ -22,6 +22,6 @@
     "slide.product__v.name__v",
     "slide.related_shared_resource__v",
     "slide.related_sub_pres__v",
-    "slide.title__v"
+    "slide.crm_shared_resource__v"
   ]
 }

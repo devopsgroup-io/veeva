@@ -1,7 +1,7 @@
 {
   "name": "veeva",
   "description": "Veeva CLM Generator & Workflow for building iRep Presentations.",
-  "version": "2.0.0-alpha.10",
+  "version": "3.0.0",
   "bin": {
     "veeva": "bin/veeva.js"
   },
@@ -32,44 +32,46 @@
   },
   "license": "MIT",
   "dependencies": {
-    "assemble": "^0.24.3",
     "basic-ftp": "^4.6.6",
     "browser-sync": "^2.26.14",
     "chalk": "^2.4.2",
     "del": "^5.0.0",
-    "gulp": "^3.9.1",
-    "gulp-changed": "^3.2.0",
+    "glob": "^11.0.3",
+    "gulp": "^4.0.2",
     "gulp-clean-css": "^3.9.0",
     "gulp-concat": "^2.6.1",
-    "gulp-extname": "^0.2.0",
-    "gulp-filter": "^5.0.1",
+    "gulp-filter": "^7.0.0",
     "gulp-flatten": "^0.4.0",
+    "gulp-front-matter": "^1.3.0",
+    "gulp-hb": "^8.0.0",
     "gulp-plumber": "^1.1.0",
+    "gulp-rename": "^2.1.0",
     "gulp-replace": "^0.6.1",
-    "gulp-sass": "^4.0.2",
+    "gulp-sass": "^6.0.1",
     "gulp-size": "^2.0.0",
     "gulp-uglify": "^3.0.0",
-    "gulp-util": "^3.0.8",
     "gulp-zip": "^4.0.0",
+    "handlebars": "^4.7.8",
     "handlebars-helpers": "^0.10.0",
+    "handlebars-layouts": "^3.1.4",
     "imagemagick": "^0.1.3",
     "js-yaml": "^3.13.1",
     "json2csv": "^4.5.2",
     "lodash": "^4.17.21",
+    "merge-stream": "^2.0.0",
     "minimist": "^1.2.5",
     "mkdirp": "^1.0.4",
     "pdfkit": "^0.10.0",
-    "puppeteer": "^1.20.0",
-    "run-sequence": "^2.2.0",
-    "yamljs": "^0.3.0"
+    "puppeteer": "^21.11.0",
+    "sass": "^1.89.2"
   },
   "devDependencies": {
     "eslint": "^6.0.1",
-    "mocha": "^6.1.4",
+    "mocha": "^6.2.3",
     "standard-version": "^6.0.1"
   },
   "engines": {
-    "node": ">=6.0",
-    "npm": ">=3.8.6"
+    "node": ">=18.20",
+    "npm": ">=10.7.0"
   }
 }
