@@ -1,0 +1,9 @@
+---
+paths:
+ deploy: 'deploy'
+ dist: 'build'
+ layouts: 'templates/layouts'
+ pages: 'templates/pages'
+ sharedAssets: 'shared/'
+ src: 'app'
+ tmp: 'build/.tmp'

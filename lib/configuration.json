@@ -58,11 +58,12 @@
         }
     },
     "paths": {
-        "src": "app",
-        "dist": "build",
         "deploy": "deploy",
-        "tmp": "build/.tmp",
+        "dist": "build",
+        "layouts": "templates/layouts",
         "pages": "templates/pages",
-        "layouts": "templates/layouts"
+        "sharedAssets": "shared",
+        "src": "app",
+        "tmp": "build/.tmp"
     }
 }

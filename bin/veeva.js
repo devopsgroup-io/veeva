@@ -1,38 +1,57 @@
 #!/usr/bin/env node
 
-var chalk = require('chalk'),
-    pkg = require('../package.json');
+'use strict';
 
-var nodeVersion = process.version.replace('v',''),
-    nodeVersionRequired = pkg.engines.node.replace('>=','');
+const chalk = require('chalk');
+const gulp = require('gulp');
+const pkg = require('../package.json');
+const utils = require('../lib/utils');
+const veeva = require('../index');
 
-// check node version compatibility
-if(nodeVersion <= nodeVersionRequired){
+// Parse versions
+const nodeVersion = utils.getVersion(process.version.replace('v', '').split('.'));
+const requiredNodeVersion = utils.getVersion(pkg.engines.node.replace('>=', '').split('.'));
 
-    console.log();
-    console.error(chalk.red.bold('✗ '), chalk.red.bold('Siteshooter requires node version ' + pkg.engines.node));
-    console.log();
-
-    process.exit(1);
+// Version check
+if (nodeVersion.major < requiredNodeVersion.major) {
+  console.error('\n' + chalk.red.bold('✗ ') +
+    `NODE ${process.version} was detected. Veeva requires Node version ${pkg.engines.node}\n`);
+  process.exit(1);
 }
 
-var veeva = require('../lib/veeva'),
-    args = [].slice.call(process.argv, 2);
+const args = process.argv.slice(2);
 
-var exitCode = 0,
-    isDebug = args.indexOf('--debug') !== -1;
+function checkForCommand(command) {
+  const commands = ['build', 'deploy', 'screenshots', 'stage', 'stage-vault'];
+  return commands.includes(command);
+}
 
-veeva.cli(args).then(function() {
-    process.exit(exitCode);
-}).catch(function(err) {
-    exitCode = 1;
-    if(!isDebug) {
-        console.error(err);
-    } else {
-        throw new Error(err);
-    }
-});
+(async () => {
+  try {
+    const options = await veeva.cli(args);
 
-process.on('exit', function() {
-    process.exit(exitCode);
-});
+    // Import tasks and attach to gulp instance
+    require('../lib/gulp')(gulp, options);
+
+    const gulpCommand = checkForCommand(args[0]) ? args[0] : 'default';
+
+    console.log();
+    console.log(chalk.yellow.bold(' ⤷ Running veeva workflow: '), chalk.underline.yellow(gulpCommand));
+    console.log();
+
+    // Run the Gulp 4 task using series()
+    await new Promise((resolve, reject) => {
+      gulp.series(gulpCommand)((err) => {
+        if (err) {
+          reject(err);
+        } else {
+          resolve();
+        }
+      });
+    });
+
+  } catch (err) {
+    console.error('\n' + chalk.red.bold('✗ ') + err.message + '\n');
+    process.exit(1);
+  }
+})();

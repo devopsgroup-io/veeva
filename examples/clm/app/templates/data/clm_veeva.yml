@@ -1,0 +1,31 @@
+---
+name: 'veeva-v1'
+key_messages:
+- key_message: 'home'
+  description: 'Home'
+  display_order: '0'
+  slides:
+  - slide: 'Home Veeva CLM Example'
+    id: '0'
+- key_message: 'overview'
+  description: 'Veeva Test Overview'
+  display_order: '1'
+  slides:
+  - slide: 'Veeva Test Overview'
+    id: '2-0'
+  - slide: 'Sub Slide 1'
+    id: '2-1'
+  - slide: 'Sub Slide 2'
+    id: '2-2'
+- key_message: 'sitemap'
+  description: 'Sitemap'
+  display_order: '2'
+  slides:
+  - slide: 'Sitemap'
+    id: '0-1'
+- key_message: 'resources'
+  description: 'Resources'
+  display_order: '3'
+  slides:
+  - slide: 'Resources'
+    id: '0-2'
