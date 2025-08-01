@@ -2,6 +2,26 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [3.0.0](https://github.com/devopsgroup-io/veeva/compare/v2.0.0-alpha.10...v3.0.0) (2025-08-01)
+
+
+### Features
+
+* **build:** overhaul build system and dependencies for Node 18+ ([25c89f7](https://github.com/devopsgroup-io/veeva/commit/25c89f7))
+
+
+### BREAKING CHANGES
+
+* **build:** - Dropped support for Node < 18
+- Replaced Gulp v3 with Gulp v4.0.2 (requires task syntax update to `series/parallel`)
+- Replaced Assemble with Handlebars via `gulp-hb`
+- Replaced deprecated `node-sass` with `sass` (dart-sass)
+- Removed Phantom; adopted Puppeteer v21.11.0
+- Updated usage of `gulp-filter` to version 7+ using merge-stream
+- Reorganized asset pipeline and CLM template rendering
+
+
+
 ## [2.0.0-alpha.10](https://github.com/devopsgroup-io/veeva/compare/v2.0.0-alpha.9...v2.0.0-alpha.10) (2021-06-04)
 
 
