@@ -65,7 +65,7 @@
     "minimist": "^1.2.5",
     "mkdirp": "^1.0.4",
     "pdfkit": "^0.10.0",
-    "puppeteer": "^21.11.0",
+    "puppeteer": "^19.11.1",
     "sass": "^1.89.2"
   },
   "devDependencies": {

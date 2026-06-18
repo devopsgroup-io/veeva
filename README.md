@@ -167,13 +167,14 @@ veeva --help
 
 ### Common Tasks
 
-| Command             | Description                                      |
-| ------------------- | ------------------------------------------------ |
-| `veeva`             | Starts dev mode: builds, watches, reloads        |
-| `veeva build`       | Production build: compiles/minifies everything   |
-| `veeva stage`       | Builds + generates zip/ctl files per Key Message |
-| `veeva deploy`      | Uploads zip/ctl files via FTP (requires config)  |
-| `veeva vault-stage` | Generates Vault Multichannel CSV file            |
+| Command             | Description                                                         |
+| ------------------- | --------------------------------------------------------------------|
+| `veeva`             | Starts dev mode: builds, watches, reloads                           |
+| `veeva build`       | Production build: compiles/minifies everything                      |
+| `veeva deploy`      | Uploads zip/ctl files via FTP (requires config)                     |
+| `veeva stage`       | Builds + generates zip/ctl files per Key Message                    |
+| `veeva screenshots` | Generates screenshots based clm.yml config file and outputs a PDF   |
+| `veeva vault-stage` | Generates Vault Multichannel CSV file                               |
 
 ### Options
 

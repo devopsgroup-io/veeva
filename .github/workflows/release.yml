@@ -38,6 +38,11 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
+      - name: 🏷 Extract tag version
+        id: get_tag
+        run: |
+          echo "new_tag=$(git describe --tags --abbrev=0)" >> $GITHUB_OUTPUT
+
       - name: 🔁 Push Version Bump to Repo
         run: git push --follow-tags origin master
         env:
@@ -51,6 +56,8 @@ jobs:
       - name: 📝 Create GitHub Release
         uses: softprops/action-gh-release@v1
         with:
+          tag_name: ${{ steps.get_tag.outputs.new_tag }}
           generate_release_notes: true
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
