@@ -2,6 +2,15 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## 3.2.0 (2026-06-18)
+
+
+### Features
+
+* update puppeteer version ([10092ec](https://github.com/devopsgroup-io/veeva/commit/10092ec))
+
+
+
 ## 3.1.0 (2025-08-01)
 
 
