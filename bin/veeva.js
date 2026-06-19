@@ -20,7 +20,7 @@ if (nodeVersion.major < requiredNodeVersion.major) {
 
 const args = process.argv.slice(2);
 
-const COMMANDS = ['build', 'deploy', 'screenshots', 'stage', 'stage-vault'];
+const COMMANDS = ['build', 'build-preview', 'deploy', 'screenshots', 'stage', 'stage-vault'];
 
 function resolveCommand (command) {
   return COMMANDS.includes(command) ? command : 'default';

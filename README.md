@@ -175,6 +175,7 @@ veeva --help
 | --------------------- | ------------------------------------------------------------------|
 | `veeva`               | Starts dev mode: builds, watches files, and reloads the browser   |
 | `veeva build`         | Production build: compiles and minifies CSS, JS, and templates    |
+| `veeva build-preview` | Builds and copies all files to `public/`; the first key message becomes `public/index.html` |
 | `veeva deploy`        | Uploads zip and ctl files via FTP (requires FTP config)           |
 | `veeva stage`         | Builds and packages each Key Message into zip and ctl files       |
 | `veeva stage-vault`   | Generates Vault Multichannel Loader CSV file                      |

@@ -62,6 +62,7 @@
         "dist": "build",
         "layouts": "templates/layouts",
         "pages": "templates/pages",
+        "public": "public",
         "sharedAssets": "shared",
         "src": "app",
         "tmp": "build/.tmp"
