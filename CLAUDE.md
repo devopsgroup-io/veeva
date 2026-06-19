@@ -77,3 +77,17 @@ These packages were removed and must not be re-introduced:
 | `mkdirp` | `fs.mkdir(path, { recursive: true })` |
 | `imagemagick` | `sharp` |
 | `merge-stream` | `Promise.all()` |
+
+## README maintenance
+
+After completing any task that changes user-facing behaviour, update `README.md` before finishing.
+
+| README section | Update when… |
+|----------------|--------------|
+| `✨ Features` | Feature added or removed |
+| `🚀 Getting Started / Prerequisites` | Node.js version changed (`engines.node` in `package.json`) |
+| `📁 File Structure` | Project directory layout changed |
+| `🧑‍💻 Working with Source Files` | Sass, JS, or template conventions changed |
+| `⚙️ Configuration Options` | `configuration.yml` or `clm.yml` keys changed |
+| `🛠️ CLI Tasks & Workflow` | Commands or options table changed |
+| `🧪 Troubleshooting & FAQ` | Version references or known gotchas changed |
