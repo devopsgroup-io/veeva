@@ -3,7 +3,6 @@
 'use strict';
 
 const chalk = require('chalk');
-const gulp = require('gulp');
 const pkg = require('../package.json');
 const utils = require('../lib/utils');
 const veeva = require('../index');
@@ -21,34 +20,24 @@ if (nodeVersion.major < requiredNodeVersion.major) {
 
 const args = process.argv.slice(2);
 
-function checkForCommand(command) {
-  const commands = ['build', 'deploy', 'screenshots', 'stage', 'stage-vault'];
-  return commands.includes(command);
+const COMMANDS = ['build', 'build-preview', 'deploy', 'screenshots', 'stage', 'stage-vault'];
+
+function resolveCommand (command) {
+  return COMMANDS.includes(command) ? command : 'default';
 }
 
 (async () => {
   try {
     const options = await veeva.cli(args);
 
-    // Import tasks and attach to gulp instance
-    require('../lib/gulp')(gulp, options);
-
-    const gulpCommand = checkForCommand(args[0]) ? args[0] : 'default';
+    const tasks = require('../lib/tasks');
+    const command = resolveCommand(args[0]);
 
     console.log();
-    console.log(chalk.yellow.bold(' ⤷ Running veeva workflow: '), chalk.underline.yellow(gulpCommand));
+    console.log(chalk.yellow.bold(' ⤷ Running veeva workflow: '), chalk.underline.yellow(command));
     console.log();
 
-    // Run the Gulp 4 task using series()
-    await new Promise((resolve, reject) => {
-      gulp.series(gulpCommand)((err) => {
-        if (err) {
-          reject(err);
-        } else {
-          resolve();
-        }
-      });
-    });
+    await tasks[command](options);
 
   } catch (err) {
     console.error('\n' + chalk.red.bold('✗ ') + err.message + '\n');

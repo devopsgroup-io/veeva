@@ -37,14 +37,9 @@ If you're developing and managing multiple Veeva CLM projects, it can be time-co
 
 ### Prerequisites
 
-Ensure the following dependencies are installed:
+* [Node.js](https://nodejs.org) **v22 or later**
 
-* [Node.js](https://nodejs.org)
-* [ImageMagick](https://imagemagick.org/script/download.php)
-
-  * **macOS:** `brew install imagemagick`
-  * **Ubuntu:** `apt-get install imagemagick`
-  * **Windows:** [Download](https://imagemagick.org/script/binary-releases.php)
+No other system-level dependencies are required. Image processing is handled internally by [sharp](https://sharp.pixelplumbing.com/).
 
 ### Installation
 
@@ -92,16 +87,25 @@ root/
 ### Sass
 
 * Located in `app/assets/scss`
-* Compiles to minified and unminified CSS
+* Entry point files (any `.scss` file not prefixed with `_`) are compiled to CSS
+* Partial files (prefixed with `_`) are imported by entry points and not compiled directly
+* Production builds are minified; development builds are unminified with live reload
 
 ### JavaScript
 
-* Located in `app/assets/js`
+* Located in `app/assets/js`, split into three categories:
+
+| Directory | Behaviour |
+|-----------|-----------|
+| `js/scripts/` | Concatenated and minified into `main.js` |
+| `js/standalone/` | Copied individually (not concatenated) |
+| `js/vendor/` | Concatenated and minified into `vendor.js` |
 
 ### Handlebars Templates
 
 * Located in `app/templates`
-* Supports [Handlebars Helpers](https://github.com/helpers/handlebars-helpers)
+* Supports [Handlebars Helpers](https://github.com/helpers/handlebars-helpers) and custom helpers
+* Front matter (YAML) in `.hbs` files is merged with data files at compile time
 
 ---
 
@@ -167,14 +171,15 @@ veeva --help
 
 ### Common Tasks
 
-| Command             | Description                                                         |
-| ------------------- | --------------------------------------------------------------------|
-| `veeva`             | Starts dev mode: builds, watches, reloads                           |
-| `veeva build`       | Production build: compiles/minifies everything                      |
-| `veeva deploy`      | Uploads zip/ctl files via FTP (requires config)                     |
-| `veeva stage`       | Builds + generates zip/ctl files per Key Message                    |
-| `veeva screenshots` | Generates screenshots based clm.yml config file and outputs a PDF   |
-| `veeva vault-stage` | Generates Vault Multichannel CSV file                               |
+| Command               | Description                                                       |
+| --------------------- | ------------------------------------------------------------------|
+| `veeva`               | Starts dev mode: builds, watches files, and reloads the browser   |
+| `veeva build`         | Production build: compiles and minifies CSS, JS, and templates    |
+| `veeva build-preview` | Builds and copies all files to `public/`; the first key message becomes `public/index.html` |
+| `veeva deploy`        | Uploads zip and ctl files via FTP (requires FTP config)           |
+| `veeva stage`         | Builds and packages each Key Message into zip and ctl files       |
+| `veeva stage-vault`   | Generates Vault Multichannel Loader CSV file                      |
+| `veeva screenshots`   | Captures screenshots via Puppeteer and outputs a PDF              |
 
 ### Options
 
@@ -193,9 +198,10 @@ veeva --help
 
 ## 🧪 Troubleshooting & FAQ
 
-* Make sure you're using a compatible Node.js version (check `package.json`)
+* Requires Node.js v22 or later — check your version with `node --version`
 * Ensure `configuration.yml` is valid YAML (use a linter if needed)
 * Screenshots only process `.html` files; static assets like `.pdf` require manual thumbnails
+* SCSS partials (files starting with `_`) are not compiled directly — they must be imported by a non-partial entry file
 
 ### Need Help?
 
@@ -211,6 +217,6 @@ Submit issues or feature requests via [GitHub Issues](https://github.com/devopsg
 
 ## 🙌 Contributing
 
-Pull requests are welcome! For major changes, please open an issue first to discuss what you’d like to change.
+Pull requests are welcome! For major changes, please open an issue first to discuss what you'd like to change.
 
 > For more examples, see the [CLM Example Project](https://github.com/devopsgroup-io/veeva/tree/master/examples/clm).
