@@ -2,6 +2,21 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [4.0.0](https://github.com/devopsgroup-io/veeva/compare/v3.2.0...v4.0.0) (2026-06-26)
+
+
+### Features
+
+* add build-preview task ([2f0ec2b](https://github.com/devopsgroup-io/veeva/commit/2f0ec2bffd52be240ee3aee49ae579024d7064f3))
+* replace Gulp with native Node.js and update all dependencies ([596c42f](https://github.com/devopsgroup-io/veeva/commit/596c42fbc606bcb1aad5e0a3ad56317a36fe3332))
+
+
+### Bug Fixes
+
+* **ci:** update release workflow for Node 22 and modern action versions ([c45d4b1](https://github.com/devopsgroup-io/veeva/commit/c45d4b187cb7d54e489f8717e4f48ebd22d477fb))
+* correcting paths ([1c47507](https://github.com/devopsgroup-io/veeva/commit/1c47507b7bb41c5c14bbaec71be0e08d1866c24f))
+* remove github action and keep this manual ([686f738](https://github.com/devopsgroup-io/veeva/commit/686f73820162b797821d46fc95e08eb10d1eb016))
+
 ## 3.2.0 (2026-06-18)
 
 
