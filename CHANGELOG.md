@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [4.1.0](https://github.com/devopsgroup-io/veeva/compare/v4.0.0...v4.1.0) (2026-07-13)
+
+
+### Bug Fixes
+
+* **build-preview:** include the veevaThumbsTask function call ([66f7d6a](https://github.com/devopsgroup-io/veeva/commit/66f7d6aea3fdb48a2c9123f8a931842cab7db1c1))
+
 ## [4.0.0](https://github.com/devopsgroup-io/veeva/compare/v3.2.0...v4.0.0) (2026-06-26)
 
 
