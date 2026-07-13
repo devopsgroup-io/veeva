@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [4.2.0](https://github.com/devopsgroup-io/veeva/compare/v4.1.0...v4.2.0) (2026-07-13)
+
+
+### Features
+
+* **build-preview:** allow for optional setting - previewURLDefault - to be passed through the build-preview function. ([0a32a08](https://github.com/devopsgroup-io/veeva/commit/0a32a08773474aa4cc00fca8c99bfec25dd89701))
+
 ## [4.1.0](https://github.com/devopsgroup-io/veeva/compare/v4.0.0...v4.1.0) (2026-07-13)
 
 
