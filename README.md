@@ -155,7 +155,12 @@ paths:
   tmp: "build/.tmp"
   pages: "app/templates/pages"
   layouts: "app/templates/layouts"
+  previewURLDefault: "https://example.com/custom-landing.html"
 ```
+
+`previewURLDefault` is optional. When set, `veeva build-preview` uses it as the
+redirect target for the root `public/index.html` instead of the first key
+message — useful for pointing preview builds at an external landing page.
 
 > 💡 Tip: YAML files must use spaces (not tabs).
 
