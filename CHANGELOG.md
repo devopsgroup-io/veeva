@@ -2,6 +2,14 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [4.3.0](https://github.com/devopsgroup-io/veeva/compare/v4.2.0...v4.3.0) (2026-07-14)
+
+
+### Bug Fixes
+
+* **build-preview:** include the veevaThumbsTask function call ([aab5629](https://github.com/devopsgroup-io/veeva/commit/aab562971b448bedc46a5b009d99774797a4d234))
+* **screenshot:** copy thumbnails into shared assets folder ([86a4bad](https://github.com/devopsgroup-io/veeva/commit/86a4bad6e9dea3c2b76a397b179d813b8f8c525e))
+
 ## [4.2.0](https://github.com/devopsgroup-io/veeva/compare/v4.1.0...v4.2.0) (2026-07-13)
 
 
