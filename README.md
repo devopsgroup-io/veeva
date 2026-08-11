@@ -156,11 +156,25 @@ paths:
   pages: "app/templates/pages"
   layouts: "app/templates/layouts"
   previewURLDefault: "https://example.com/custom-landing.html"
+  public:
+    dir: "public"
+    keep:
+      - "CNAME"
 ```
 
 `previewURLDefault` is optional. When set, `veeva build-preview` uses it as the
 redirect target for the root `public/index.html` instead of the first key
 message — useful for pointing preview builds at an external landing page.
+
+`paths.public.dir` is the output directory for `veeva build-preview` (defaults
+to `public`). `paths.public.keep` is an optional list of top-level file or
+folder names inside that directory to preserve when the preview is rebuilt —
+useful for files like `CNAME` that need to persist across builds.
+
+> ⚠️ Breaking change: `paths.public` was previously a plain string (the
+> directory name). It is now an object with `dir` and `keep` keys — update any
+> existing `configuration.yml` that sets `paths.public` to the object form
+> shown above.
 
 > 💡 Tip: YAML files must use spaces (not tabs).
 
