@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [4.4.0](https://github.com/devopsgroup-io/veeva/compare/v4.3.0...v4.4.0) (2026-08-11)
+
+
+### Features
+
+* all for excluding files from the clean process during a veeva build-preview run ([3ca07e2](https://github.com/devopsgroup-io/veeva/commit/3ca07e29deee3bee93264b4a38d68d17fa01bc90))
+
 ## [4.3.0](https://github.com/devopsgroup-io/veeva/compare/v4.2.0...v4.3.0) (2026-07-14)
 
 
