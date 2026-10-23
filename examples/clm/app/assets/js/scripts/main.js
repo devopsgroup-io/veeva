@@ -166,7 +166,7 @@ var VEEVA = VEEVA || {};
                 //Only run if deployed, and if it is, then run Veeva scripts
                 if ($this.isDeployed) {
 
-                    //Update subscence field and then go to slide
+                    //Update subscene field and then go to slide
                     $this.veevaUpdateUserObject(_slide, function() {
                         $this.goToSlide(_section + '.zip', $this.presentationPrimary);
                     });
@@ -192,7 +192,7 @@ var VEEVA = VEEVA || {};
                 //Only run if deployed, and if it is, then run Veeva scripts
                 if ($this.isDeployed && _keyMessage !== '' && _presentation !== '') {
 
-                    //Update subscence field and then go to slide
+                    //Update subscene field and then go to slide
                     $this.veevaUpdateUserObject(_keyMessage, function() {
                         $this.goToSlide(_keyMessage + '.zip', _presentation);
                     });
@@ -216,7 +216,7 @@ var VEEVA = VEEVA || {};
                 //Only run if deployed, and if it is, then run Veeva scripts
                 if ($this.isDeployed && _keyMessage !== '' && _presentation !== '') {
 
-                    //Update subscence field and then go to slide
+                    //Update subscene field and then go to slide
                     $this.veevaUpdateUserObject(_keyMessage, function() {
                         $this.goToSlide(_product + $this.product.suffix + _keyMessage + '.zip', _presentation);
                     });
