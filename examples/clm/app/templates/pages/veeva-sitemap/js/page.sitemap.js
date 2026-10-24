@@ -107,7 +107,7 @@ var pageSitemap = function() {
 
                     if (pageSettings.isDeployed) {
 
-                        //Update subscence field and then go to slide
+                        //Update subscene field and then go to slide
                         veevaUpdateUserObject(_slide, function() {
 
                             veevaGoToSlide(_section.replace('.html', '.zip'), pageSettings.presentationPrimary);
